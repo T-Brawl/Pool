@@ -19,7 +19,7 @@ public abstract class Scheduler extends Action {
 		this.actions = new ArrayList<Action>();
 	}
 	
-	public void add(Action a){
+	public void addAction(Action a){
 		this.actions.add(a);
 	}
 	

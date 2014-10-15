@@ -3,11 +3,13 @@ package resources;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public abstract class ResourcePool<T extends Resource> {
-	List<T> resources;
-	Set<T> occupiedResources;
+	protected List<T> resources;
+	protected Set<T> occupiedResources;
+	
 	public ResourcePool(int nbResources) {
 		this.resources = new ArrayList<T>();
 		this.occupiedResources = new HashSet<T>();
@@ -16,7 +18,7 @@ public abstract class ResourcePool<T extends Resource> {
 	
 	public T provideResource(){
 		if(resources.isEmpty()){
-			return null;
+			throw new NoSuchElementException("no resource available");
 		}
 		T resource = resources.get(0);
 		occupiedResources.add(resource);

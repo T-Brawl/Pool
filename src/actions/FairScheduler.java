@@ -2,6 +2,7 @@ package actions;
 
 import java.util.Iterator;
 
+
 public class FairScheduler extends Scheduler {
 
 	Iterator<Action> it;
@@ -18,14 +19,17 @@ public class FairScheduler extends Scheduler {
 
 	@Override
 	protected Action nextAction() {
+		/*it = super.actions.iterator();
 		if(it.hasNext()){
 			return it.next();
 		}
-		it = super.actions.iterator();
-		if(!it.hasNext()){
+		else(§it.hasNext()){
 			throw new IllegalStateException("Liste vide");
 		}
-		return it.next();
+		return it.next();*/
+		if(!super.actions.isEmpty())
+				return super.actions.get(0);
+		throw new IllegalStateException("Liste vide");
 	}
 	
 }
