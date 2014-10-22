@@ -32,5 +32,8 @@ public class FairScheduler extends Scheduler {
 		throw new IllegalStateException("Liste vide");
 	}
 
+	public void addAction(Action a) {
+		super.addAction(a);		
+	}
 	
 }

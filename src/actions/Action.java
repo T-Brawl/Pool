@@ -30,4 +30,9 @@ public abstract class Action {
 	
 	protected abstract void doRealStep();	
 	
+	public String toString(){
+		return "Action "+ready;
+		
+	}
+	
 }

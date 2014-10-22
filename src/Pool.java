@@ -16,7 +16,9 @@ public class Pool {
 		s.addAction(new Swimmer("Charlie", baskets, cubicles, 3, 6, 10));
 		s.addAction(new Swimmer("Alexis", baskets, cubicles, 6, 5, 7));
 		int nbSteps = 0;
-		while (!s.isFinished()) {
+		while (!s.isFinished()&&nbSteps<10) {
+			System.out.println("Tutu "+nbSteps);
+			System.out.println(s.getActions().size());
 			nbSteps++;
 			s.doStep();
 		}

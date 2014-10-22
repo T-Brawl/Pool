@@ -36,4 +36,5 @@ public abstract class ResourcePool<T extends Resource> {
 
 	protected abstract void createPool(int nbResources);
 
+
 }

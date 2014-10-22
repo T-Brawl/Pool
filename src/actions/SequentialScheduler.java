@@ -15,7 +15,8 @@ public class SequentialScheduler extends Scheduler {
 	
 	@Override
 	protected void removeAction(Action a) {
-		super.actions.remove(0);
+		getActions().remove(0);
+		System.out.println("Suppression "+a);
 	}
 
 	@Override

@@ -41,9 +41,20 @@ public abstract class Scheduler extends Action {
 			this.removeAction(next);
 		}
 	}
+	
+	public List<Action> getActions(){
+		return this.actions;
+	}
+	
+	@Override
+	public void doStep() throws ActionFinishedException{
+		System.out.println("Passé dans Scheduler.doStep()");
+		super.doStep();
+	}
 
 	protected abstract void removeAction(Action a);
 	
 	protected abstract Action nextAction();
+
 
 }
