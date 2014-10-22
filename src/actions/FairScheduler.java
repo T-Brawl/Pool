@@ -16,7 +16,7 @@ public class FairScheduler extends Scheduler {
 	protected void removeAction(Action a) {
 		super.actions.remove(a);
 	}
-
+	
 	@Override
 	protected Action nextAction() {
 		/*it = super.actions.iterator();
@@ -31,5 +31,6 @@ public class FairScheduler extends Scheduler {
 				return super.actions.get(0);
 		throw new IllegalStateException("Liste vide");
 	}
+
 	
 }
