@@ -1,6 +1,7 @@
 package actions;
 
 import java.util.Iterator;
+import java.util.List;
 
 
 public class FairScheduler extends Scheduler {
@@ -34,6 +35,10 @@ public class FairScheduler extends Scheduler {
 
 	public void addAction(Action a) {
 		super.addAction(a);		
+	}
+
+	public List<Action> getActions() {
+		return actions;
 	}
 	
 }

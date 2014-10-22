@@ -1,4 +1,5 @@
 package actions;
+import exceptions.ActionFinishedException;
 import resources.*;
 
 public class Swimmer extends SequentialScheduler{
@@ -77,4 +78,20 @@ public class Swimmer extends SequentialScheduler{
 	public void setTimeDressed(int timeDressed) {
 		this.timeDressed = timeDressed;
 	}
+	
+	
+	
+	
+	
+	public static void main(String[] args){
+		Swimmer s = new Swimmer("toto", new BasketPool(6), new CubiclePool(6), 6, 4, 8);
+		try {
+			s.doStep();
+		} catch (ActionFinishedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

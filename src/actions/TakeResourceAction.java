@@ -28,7 +28,6 @@ public class TakeResourceAction extends Action {
 
 	@Override
 	protected void doRealStep() {
-		// TODO Auto-generated method stub
 		try
 		{
 			this.resource = resourcePool.provideResource();
