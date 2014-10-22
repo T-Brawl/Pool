@@ -2,11 +2,7 @@
 
 .classpath
 
-.metadata/.lock
-
-.metadata/.log
-
-.metadata/.mylyn/.taskListIndex/segments_1
+.metadata
 
 *.gen
 
@@ -24,14 +20,6 @@
 
 *.xmi
 
-.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache
-
-.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache
-
-.metadata/.plugins/org.eclipse.jdt.core/invalidArchivesCache
-
-.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache
-
 *.dat
 
 *.class
@@ -44,10 +32,3 @@
 
 .project
 
-*.class
-
-bin/actions/FairScheduler.class
-
-bin/actions/Scheduler.class
-
-bin/resources/ResourcePool.class
