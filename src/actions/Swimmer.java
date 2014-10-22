@@ -5,11 +5,9 @@ import actions.*;
 public class Swimmer extends SequentialScheduler{
 
 	private String name;
-	
 	private BasketPool basket;
-	
+
 	private CubiclePool cubicle;
-	
 	private int timeUndressed, timeSwim, timeDressed;
 	
 	public Swimmer(String name, BasketPool basket, CubiclePool cubicle, int timeUndressed, int timeSwim, int timeDressed) {
@@ -33,17 +31,51 @@ public class Swimmer extends SequentialScheduler{
 		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle));
 		actions.add(new FreeResourceAction(traBasket.getResource(), basket));
 	}
-
-	@Override
-	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+	public String getName() {
+		return name;
 	}
 
-	@Override
-	protected void doRealStep() {
-		// TODO Auto-generated method stub
-		
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+	public BasketPool getBasket() {
+		return basket;
+	}
+
+	public void setBasket(BasketPool basket) {
+		this.basket = basket;
+	}
+
+	public CubiclePool getCubicle() {
+		return cubicle;
+	}
+
+	public void setCubicle(CubiclePool cubicle) {
+		this.cubicle = cubicle;
+	}
+
+	public int getTimeUndressed() {
+		return timeUndressed;
+	}
+
+	public void setTimeUndressed(int timeUndressed) {
+		this.timeUndressed = timeUndressed;
+	}
+
+	public int getTimeSwim() {
+		return timeSwim;
+	}
+
+	public void setTimeSwim(int timeSwim) {
+		this.timeSwim = timeSwim;
+	}
+
+	public int getTimeDressed() {
+		return timeDressed;
+	}
+
+	public void setTimeDressed(int timeDressed) {
+		this.timeDressed = timeDressed;
+	}
 }
