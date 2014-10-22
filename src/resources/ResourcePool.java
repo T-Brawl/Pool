@@ -26,7 +26,7 @@ public abstract class ResourcePool<T extends Resource> {
 		return resource;
 	}
 	
-	public void freeResource(T resource){
+	public void freeResource(Resource resource){
 		if(occupiedResources.contains(resource)){
 			occupiedResources.remove(resource);
 		}else{

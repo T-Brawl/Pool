@@ -4,9 +4,9 @@ import resources.*;
 
 public class FreeResourceAction extends Action{
 	Resource resource;
-	ResourcePool<Resource> resourcePool;
+	ResourcePool<?> resourcePool;
 	boolean isFree;
-	public FreeResourceAction(Resource resource, ResourcePool<Resource> resourcePool) {
+	public FreeResourceAction(Resource resource, ResourcePool<?> resourcePool) {
 		super();
 		this.resourcePool = resourcePool;
 		this.resource = resource;

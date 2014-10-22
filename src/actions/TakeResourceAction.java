@@ -1,14 +1,14 @@
 package actions;
 import resources.*;
 public class TakeResourceAction extends Action {
-	private ResourcePool<Resource> resourcePool;
+	private ResourcePool<?> resourcePool;
 	private Resource resource;
-	public TakeResourceAction(ResourcePool<Resource> resourcePool) {
+	public TakeResourceAction(ResourcePool<?> resourcePool) {
 		super();
 		this.resourcePool = resourcePool;
 		// TODO Auto-generated constructor stub
 	}
-	public ResourcePool<Resource> getResourcePool() {
+	public ResourcePool<?> getResourcePool() {
 		return resourcePool;
 	}
 	public void setResourcePool(ResourcePool<Resource> resourcePool) {

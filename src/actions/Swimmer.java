@@ -25,13 +25,13 @@ public class Swimmer extends SequentialScheduler{
 		actions.add(traBasket);
 		actions.add(traCubicle);
 		actions.add(new ForeseeableAction(timeUndressed));
-		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle);
+		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle));
 		actions.add(new ForeseeableAction(timeSwim));
 		traCubicle = new TakeResourceAction(cubicle);
 		actions.add(traCubicle);
 		actions.add(new ForeseeableAction(timeDressed));
-		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle);
-		actions.add(new FreeResourceAction(traBasket.getResource(), basket);
+		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle));
+		actions.add(new FreeResourceAction(traBasket.getResource(), basket));
 	}
 
 	@Override
