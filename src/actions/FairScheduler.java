@@ -10,27 +10,19 @@ public class FairScheduler extends Scheduler {
 	
 	public FairScheduler() {
 		super();
-		it = super.actions.iterator();
+		it = actions.iterator();
 	}
 
 	@Override
-	protected void removeAction(Action a) {
-		super.actions.remove(a);
+	protected void removeAction() {
+		it.remove();
 	}
 	
 	@Override
 	protected Action nextAction() {
-		/*it = super.actions.iterator();
-		if(it.hasNext()){
-			return it.next();
-		}
-		else(§it.hasNext()){
-			throw new IllegalStateException("Liste vide");
-		}
-		return it.next();*/
-		if(!super.actions.isEmpty())
-				return super.actions.get(0);
-		throw new IllegalStateException("Liste vide");
+		if(! it.hasNext())
+			this.it = actions.iterator();
+		return it.next();
 	}
 
 	public void addAction(Action a) {

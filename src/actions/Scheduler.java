@@ -38,7 +38,7 @@ public abstract class Scheduler extends Action {
 			throw new IllegalStateException();
 		}
 		if(next.isFinished()){
-			this.removeAction(next);
+			this.removeAction();
 		}
 	}
 	
@@ -46,13 +46,8 @@ public abstract class Scheduler extends Action {
 		return this.actions;
 	}
 	
-	@Override
-	public void doStep() throws ActionFinishedException{
-		System.out.println("Passé dans Scheduler.doStep()");
-		super.doStep();
-	}
 
-	protected abstract void removeAction(Action a);
+	protected abstract void removeAction();
 	
 	protected abstract Action nextAction();
 
