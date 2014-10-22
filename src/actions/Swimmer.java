@@ -1,6 +1,5 @@
 package actions;
 import resources.*;
-import actions.*;
 
 public class Swimmer extends SequentialScheduler{
 
