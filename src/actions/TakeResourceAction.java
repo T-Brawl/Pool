@@ -3,10 +3,11 @@ import resources.*;
 public class TakeResourceAction extends Action {
 	private ResourcePool<?> resourcePool;
 	private Resource resource;
-	public TakeResourceAction(ResourcePool<?> resourcePool) {
+	private ResourcefulUser<Resource> user;
+	public TakeResourceAction(ResourcePool<?> resourcePool, ResourcefulUser<Resource> user) {
 		super();
+		this.user = user;
 		this.resourcePool = resourcePool;
-		// TODO Auto-generated constructor stub
 	}
 	public ResourcePool<?> getResourcePool() {
 		return resourcePool;
@@ -15,26 +16,23 @@ public class TakeResourceAction extends Action {
 		this.resourcePool = resourcePool;
 	}
 	public Resource getResource() {
-		return resource;
+		
+		return this.resource;
 	}
-	public void setResource(Resource resource) {
-		this.resource = resource;
-	}
-	@Override
 	public boolean isFinished() {
-		// TODO Auto-generated method stub
-		return (this.resource != null);
+		return (getResource() != null);
 	}
 
 	@Override
 	protected void doRealStep() {
+		System.out.print(resourcePool.description());
 		try
 		{
 			this.resource = resourcePool.provideResource();
+			user.setResource(resource);
 		}
 		catch(Exception e)
-		{
-		}
+		{}
 	}
 
 }

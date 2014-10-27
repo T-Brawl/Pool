@@ -3,10 +3,10 @@ package actions;
 import resources.*;
 
 public class FreeResourceAction extends Action{
-	Resource resource;
+	ResourcefulUser<Resource> resource;
 	ResourcePool<?> resourcePool;
 	boolean isFree;
-	public FreeResourceAction(Resource resource, ResourcePool<?> resourcePool) {
+	public FreeResourceAction(ResourcefulUser<Resource> resource, ResourcePool<?> resourcePool) {
 		super();
 		this.resourcePool = resourcePool;
 		this.resource = resource;
@@ -20,17 +20,17 @@ public class FreeResourceAction extends Action{
 	}
 
 	@Override
+	public String toString() {
+		return "FreeResourceAction [resource=" + resource + ", resourcePool="
+				+ resourcePool + ", isFree=" + isFree + "]";
+	}
+
+	@Override
 	protected void doRealStep() {
 		// TODO Auto-generated method stub
-		try
-		{
-			resourcePool.freeResource(resource);
+		System.out.println("freeing resource from " + resourcePool.toString());
+			resourcePool.freeResource(resource.getResource());
 			isFree = true;
-		}
-		catch(Exception e)
-		{
-			isFree = false;
-		}
 	}
 
 }

@@ -2,6 +2,11 @@ package resources;
 
 public class CubiclePool extends ResourcePool<Cubicle> {
 
+	@Override
+	public String toString() {
+		return "pool cubicle";
+	}
+
 	public CubiclePool(int nbResources) {
 		super(nbResources);
 	}
@@ -12,5 +17,9 @@ public class CubiclePool extends ResourcePool<Cubicle> {
 			this.resources.add(new Cubicle());
 		}
 	}
-
+	
+	public String description()
+	{
+		return "trying to take resource from "+this.toString()+"... ";
+	}
 }

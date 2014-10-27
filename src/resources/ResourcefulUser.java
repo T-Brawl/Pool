@@ -16,4 +16,9 @@ public class ResourcefulUser<R extends Resource> {
 		this.resource = null;
 	}
 
+	@Override
+	public String toString() {
+		return "";
+	}
+
 }

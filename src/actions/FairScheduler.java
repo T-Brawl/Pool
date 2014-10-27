@@ -6,11 +6,10 @@ import java.util.List;
 
 public class FairScheduler extends Scheduler {
 
-	Iterator<Action> it;
-	
+	private Iterator<Action> it;
 	public FairScheduler() {
 		super();
-		it = actions.iterator();
+		this.it = actions.iterator();
 	}
 
 	@Override
@@ -21,12 +20,15 @@ public class FairScheduler extends Scheduler {
 	@Override
 	protected Action nextAction() {
 		if(! it.hasNext())
+		{
 			this.it = actions.iterator();
+		}
 		return it.next();
 	}
 
 	public void addAction(Action a) {
-		super.addAction(a);		
+		actions.add(a);
+		this.it = actions.iterator();
 	}
 
 	public List<Action> getActions() {

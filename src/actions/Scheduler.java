@@ -31,17 +31,18 @@ public abstract class Scheduler extends Action {
 	@Override
 	protected void doRealStep() {
 		Action next;
-		next = this.nextAction();
 		try{
+			System.out.print(this.toString());
+			next = this.nextAction();
 			next.doStep();
+			if(next.isFinished()){
+				this.removeAction();
+			}
 		}catch(ActionFinishedException e){
-			throw new IllegalStateException();
-		}
-		if(next.isFinished()){
-			this.removeAction();
+			throw new IllegalStateException(e);
 		}
 	}
-	
+
 	public List<Action> getActions(){
 		return this.actions;
 	}

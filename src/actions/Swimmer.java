@@ -1,4 +1,5 @@
 package actions;
+
 import exceptions.ActionFinishedException;
 import resources.*;
 
@@ -6,30 +7,34 @@ public class Swimmer extends SequentialScheduler{
 
 	private String name;
 	private BasketPool basket;
-
 	private CubiclePool cubicle;
 	private int timeUndressed, timeSwim, timeDressed;
-	
+	private ResourcefulUser<Resource> resourcefullUserBasket;
+	private ResourcefulUser<Resource> resourcefullUserCubicle;
+
 	public Swimmer(String name, BasketPool basket, CubiclePool cubicle, int timeUndressed, int timeSwim, int timeDressed) {
 		super();
+		resourcefullUserBasket  = new ResourcefulUser<Resource>();
+		resourcefullUserCubicle= new ResourcefulUser<Resource>();
+
 		this.name = name;
 		this.basket = basket;
 		this.cubicle = cubicle;
 		this.timeUndressed = timeUndressed;
 		this.timeSwim = timeSwim;
 		this.timeDressed = timeDressed;
-		TakeResourceAction traBasket = new TakeResourceAction(basket);
-		TakeResourceAction traCubicle = new TakeResourceAction(cubicle);
+		TakeResourceAction traBasket = new TakeResourceAction(basket, resourcefullUserBasket);
+		TakeResourceAction traCubicle = new TakeResourceAction(cubicle, resourcefullUserCubicle);
 		actions.add(traBasket);
 		actions.add(traCubicle);
-		actions.add(new ForeseeableAction(timeUndressed));
-		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle));
-		actions.add(new ForeseeableAction(timeSwim));
-		traCubicle = new TakeResourceAction(cubicle);
+		actions.add(new ForeseeableAction(timeUndressed, "undressing"));
+		actions.add(new FreeResourceAction(resourcefullUserCubicle, cubicle));
+		actions.add(new ForeseeableAction(timeSwim, "swimming"));
+		traCubicle = new TakeResourceAction(cubicle, resourcefullUserCubicle);
 		actions.add(traCubicle);
-		actions.add(new ForeseeableAction(timeDressed));
-		actions.add(new FreeResourceAction(traCubicle.getResource(), cubicle));
-		actions.add(new FreeResourceAction(traBasket.getResource(), basket));
+		actions.add(new ForeseeableAction(timeDressed,"dressing"));
+		actions.add(new FreeResourceAction(resourcefullUserCubicle, cubicle));
+		actions.add(new FreeResourceAction(resourcefullUserBasket, basket));
 	}
 	public String getName() {
 		return name;
@@ -78,20 +83,35 @@ public class Swimmer extends SequentialScheduler{
 	public void setTimeDressed(int timeDressed) {
 		this.timeDressed = timeDressed;
 	}
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return name +"'s turn\n" + name + " ";
+	}
 	
 	public static void main(String[] args){
-		Swimmer s = new Swimmer("toto", new BasketPool(6), new CubiclePool(6), 6, 4, 8);
+		
+		BasketPool baskets = new BasketPool(6);
+		CubiclePool cubicles = new CubiclePool(3);
+		FairScheduler s = new FairScheduler();
+		
+		s.addAction(new Swimmer("Camille", baskets, cubicles, 6, 4, 8));
+		s.addAction(new Swimmer("Lois", baskets, cubicles, 2, 10, 4));
+
+		int turn = 0;
 		try {
-			s.doStep();
+			while(! s.isFinished())
+			{
+				s.doStep();
+				turn ++;
+			}
 		} catch (ActionFinishedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Finished in "+turn+ " steps");
 	}
+
+
 	
 	
 }
