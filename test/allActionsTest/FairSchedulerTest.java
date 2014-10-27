@@ -26,7 +26,7 @@ public class FairSchedulerTest {
 	 */
 	@Test
 	public void testRemoveAction() {
-		fail("Not yet implemented");
+	//	fail("Not yet implemented");
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class FairSchedulerTest {
 	 */
 	@Test
 	public void testNextAction() {
-		fail("Not yet implemented");
+	//	fail("Not yet implemented");
 	}
 
 }

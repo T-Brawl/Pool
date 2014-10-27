@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import actions.Action;
-
 import exceptions.ActionFinishedException;
 
 
@@ -40,5 +39,6 @@ public abstract class ActionTest {
 		assertFalse(action.isInProgress());
 		assertTrue(action.isFinished());
 	}
+
 
 }

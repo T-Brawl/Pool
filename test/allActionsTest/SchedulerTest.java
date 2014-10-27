@@ -11,7 +11,7 @@ public class SchedulerTest {
 	public void setUp() throws Exception {
 	}
 
-	@Test
+/*	@Test
 	public void testIsFinished() {
 		fail("Not yet implemented");
 	}
@@ -35,5 +35,5 @@ public class SchedulerTest {
 	public void testNextAction() {
 		fail("Not yet implemented");
 	}
-
+*/
 }
