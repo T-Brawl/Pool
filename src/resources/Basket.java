@@ -1,5 +1,14 @@
 package resources;
 
+/**
+ * <b>Basket is an implementation of Resource, it represents a resource to be basket.</b>
+ * <p>
+ * It only has a description.
+ * </p>
+ * 
+ * 
+ * @author Marine Bal & Alexandre Moevi & Theo Plockyn
+ */
 public class Basket implements Resource{
 
 	@Override
@@ -8,7 +17,6 @@ public class Basket implements Resource{
 	}
 
 	public Basket() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -1,7 +1,15 @@
 import resources.*;
 import exceptions.*;
 import actions.*;
-
+/**
+ * <b>Pool is the class that executes the main method.</b>
+ * <p>
+ * It creates the exact expected example.
+ * </p>
+ * 
+ * 
+ * @author Marine Bal & Alexandre Moevi & Theo Plockyn
+ */
 
 public class Pool {
 	public static void main(String[] args) throws ActionFinishedException {

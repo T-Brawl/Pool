@@ -1,12 +1,23 @@
 package resources;
-
+/**
+ * <b>BasketPool is a ResourcePool of Basket.</b>
+ * <p>
+ * The resources kept here are only baskets.
+ * </p>
+ * 
+ * 
+ * @author Marine Bal & Alexandre Moevi & Theo Plockyn
+ */
 public class BasketPool extends ResourcePool<Basket> {
 
 	@Override
 	public String toString() {
 		return "pool basket";
 	}
-
+	/**
+	 * 
+	 * @param nbResources the number of basket wanted.
+	 */
 	public BasketPool(int nbResources) {
 		super(nbResources);
 	}
