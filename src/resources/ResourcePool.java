@@ -34,9 +34,9 @@ public abstract class ResourcePool<T extends Resource> {
 	/**
 	 * 
 	 * @return the resource provided
-	 * @throws InterruptedException
+	 * @throws NoSuchElementException when there's no resource left
 	 */
-	public T provideResource() throws InterruptedException{
+	public T provideResource() throws NoSuchElementException{
 		if(resources.isEmpty()){
 			System.out.println("failed");
 			throw new NoSuchElementException("no resource available");
@@ -51,7 +51,7 @@ public abstract class ResourcePool<T extends Resource> {
 	/**
 	 * 
 	 * @param resource the resource to be freed.
-	 * @throws ActionFinishedException 
+	 * @throws ActionFinishedException when there's nothing to free
 	 */
 	@SuppressWarnings("unchecked")
 	public void freeResource(Resource resource) throws ActionFinishedException{

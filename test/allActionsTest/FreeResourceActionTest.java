@@ -36,14 +36,14 @@ public class FreeResourceActionTest extends ActionTest
 	@Test
 	public void notFinished() 
 	{
-		action = (FreeResourceAction) createAction();
+		action = createAction();
 		assertFalse(action.isFinished());
 	}
 	
 	@Test
 	public void finished() 
 	{
-		action = (FreeResourceAction) createAction();
+		action = createAction();
 		assertFalse(action.isFinished());
 		while(!action.isFinished()){
 			try {

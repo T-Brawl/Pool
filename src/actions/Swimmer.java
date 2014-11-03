@@ -1,6 +1,5 @@
 package actions;
 
-import exceptions.ActionFinishedException;
 import resources.*;
 /**
  * <b>Swimmer is a extension of SequentialScheduler.</b>
