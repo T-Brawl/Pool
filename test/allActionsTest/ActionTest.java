@@ -10,10 +10,12 @@ import exceptions.ActionFinishedException;
 public abstract class ActionTest {
 	
 	protected abstract Action createAction();
+	
+	protected Action action;
 
 	@Test(expected = ActionFinishedException.class)
 	public void doStepWhileFinishedThrowsException() throws ActionFinishedException {
-		Action action = createAction();
+		action = createAction();
 		while(!action.isFinished()) {
 			try {action.doStep();}
 			catch (ActionFinishedException e) {fail("It was not supposed to happen");}
@@ -25,7 +27,7 @@ public abstract class ActionTest {
 	
 	@Test
 	public void oneStepAtTheTime() {
-		Action action = createAction();
+		action = createAction();
 		assertTrue(action.isReady());
 		assertFalse(action.isInProgress());
 		assertFalse(action.isFinished());

@@ -2,38 +2,77 @@ package allActionsTest;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
-public class SchedulerTest {
+import exceptions.ActionFinishedException;
+import actions.Action;
+import actions.ForeseeableAction;
+import actions.Scheduler;
 
-	@Before
-	public void setUp() throws Exception {
+public abstract class SchedulerTest {
+	
+	/**
+	 * Creates an empty scheduler
+	 * @return an empty scheduler
+	 */
+	protected abstract Scheduler createScheduler();
+	
+	protected Scheduler scheduler;
+	
+
+	@Test
+	public void testAdd() {
+		scheduler = createScheduler();
+		scheduler.addAction(new ForeseeableAction(1, "test"));
+		assertFalse(scheduler.getActions().isEmpty());
+		assertEquals(1, scheduler.getActions().size());
+		
 	}
-
-/*	@Test
+	
+	@Test
 	public void testIsFinished() {
-		fail("Not yet implemented");
+		scheduler = createScheduler();
+		scheduler.addAction(new ForeseeableAction(10, "test"));
+		assertFalse(scheduler.isFinished());
+		while(!scheduler.isFinished()){
+			try {
+				scheduler.doStep();
+			} catch (ActionFinishedException e) {
+			}
+		}
+		assertTrue(scheduler.isFinished());
 	}
 
 	@Test
 	public void testDoRealStep() {
-		fail("Not yet implemented");
+		scheduler = createScheduler();
+		scheduler.addAction(new ForeseeableAction(10, "test"));
+		assertTrue(scheduler.isReady());
+		try {
+			scheduler.doStep();
+		} catch (ActionFinishedException e) {
+			fail("Should not happen");
+		}
+		assertFalse(scheduler.isReady());
+		assertTrue(scheduler.isInProgress());
+	}
+	
+	@Test
+	public void testGetActions() {
+		scheduler = createScheduler();
+		Action mock1 = new ForeseeableAction(10, "test");
+		Action mock2 = new ForeseeableAction(10, "test2");
+
+		scheduler.addAction(mock1);
+		scheduler.addAction(mock2);
+
+		assertEquals(mock1, scheduler.getActions().get(0));
+		assertEquals(mock2, scheduler.getActions().get(1));
+		
 	}
 
-	@Test
-	public void testAdd() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testRemoveAction() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testNextAction() {
-		fail("Not yet implemented");
-	}
-*/
 }

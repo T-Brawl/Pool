@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.ActionFinishedException;
 import resources.BasketPool;
 import resources.Resource;
 import resources.ResourcefulUser;
@@ -11,7 +12,7 @@ import actions.FreeResourceAction;
 import actions.TakeResourceAction;
 
 
-public abstract class FreeResourceActionTest extends ActionTest
+public class FreeResourceActionTest extends ActionTest
 {
 	
 	ResourcefulUser<Resource> resourcefullUser;
@@ -24,29 +25,33 @@ public abstract class FreeResourceActionTest extends ActionTest
 		resourcefullUser  = new ResourcefulUser<Resource>();
 
 		tra = new TakeResourceAction(baskets, resourcefullUser);
+		try {
+			tra.doStep();
+		} catch (ActionFinishedException e) {
+			e.printStackTrace();
+		}
 		return new FreeResourceAction(resourcefullUser, baskets);
 	}
-	@Test
-	public void testRemoveAction() {
-	//	fail("Not yet implemented");
-	}
+
 	@Test
 	public void notFinished() 
 	{
-		FreeResourceAction fr = (FreeResourceAction) createAction();
-		assertFalse(fr.isFinished());
+		action = (FreeResourceAction) createAction();
+		assertFalse(action.isFinished());
 	}
+	
 	@Test
 	public void finished() 
 	{
-		FreeResourceAction fr = (FreeResourceAction) createAction();
-		try
-		{
-			tra.doStep();
-			fr.doStep();
+		action = (FreeResourceAction) createAction();
+		assertFalse(action.isFinished());
+		while(!action.isFinished()){
+			try {
+				action.doStep();
+			} catch (ActionFinishedException e) {
+				fail("should never happen");
+			}
 		}
-		catch(Exception e)
-		{}
-		assertFalse(fr.isFinished());
+		assertTrue(action.isFinished());
 	}
 }

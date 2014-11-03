@@ -21,7 +21,7 @@ public class ForeseeableActionTest extends ActionTest {
 	
 	@Test
 	public void doStepsCorrectly() {
-		Action action = this.createAction();
+		action = this.createAction();
 		assertTrue(action.isReady());
 		assertFalse(action.isInProgress());
 		assertFalse(action.isFinished());
@@ -38,6 +38,7 @@ public class ForeseeableActionTest extends ActionTest {
 		assertFalse(action.isInProgress());
 		assertTrue(action.isFinished());
 	}
+	
 	@Test(expected=IllegalArgumentException.class)
 	public void IntegerNegative()  {
 		new ForeseeableAction(-5, "TEST");

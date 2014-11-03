@@ -1,5 +1,6 @@
 package actions;
 
+import exceptions.ActionFinishedException;
 import resources.*;
 
 /**
@@ -14,7 +15,6 @@ import resources.*;
 public class FreeResourceAction extends Action {
 	ResourcefulUser<Resource> resource;
 	ResourcePool<?> resourcePool;
-	boolean isFree;
 	
 	/**
 	 * 
@@ -26,7 +26,6 @@ public class FreeResourceAction extends Action {
 		super();
 		this.resourcePool = resourcePool;
 		this.resource = resource;
-		this.isFree = false;
 	}
 
 	/**
@@ -34,13 +33,13 @@ public class FreeResourceAction extends Action {
 	 */
 	@Override
 	public boolean isFinished() {
-		return isFree;
+		return (resource==null);
 	}
 	
 	@Override
 	public String toString() {
 		return "FreeResourceAction [resource=" + resource + ", resourcePool="
-				+ resourcePool + ", isFree=" + isFree + "]";
+				+ resourcePool + ", isFree=" + isFinished() + "]";
 	}
 
 	/**
@@ -48,9 +47,13 @@ public class FreeResourceAction extends Action {
 	 */
 	@Override
 	protected void doRealStep() {
-		System.out.println("freeing resource from " + resourcePool.toString());
-		resourcePool.freeResource(resource.getResource());
-		isFree = true;
+		try {
+			resourcePool.freeResource(resource.getResource());
+			System.out.println("freeing resource from " + resourcePool.toString());
+		} catch (ActionFinishedException e) {
+			System.err.println("resource is already free");
+		}
+		resource=null;
 	}
 
 }

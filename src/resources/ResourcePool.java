@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import exceptions.ActionFinishedException;
+
 /**
  * <b>ResourcePool is a pool of resources.</b>
  * <p>
@@ -49,15 +51,16 @@ public abstract class ResourcePool<T extends Resource> {
 	/**
 	 * 
 	 * @param resource the resource to be freed.
+	 * @throws ActionFinishedException 
 	 */
 	@SuppressWarnings("unchecked")
-	public void freeResource(Resource resource){
+	public void freeResource(Resource resource) throws ActionFinishedException{
 		if(occupiedResources.contains(resource)){
 			resources.add((T) resource);
 			occupiedResources.remove(resource);
 			
 		}else{
-			throw new IllegalStateException("Resource is already free");
+			throw new ActionFinishedException("Resource is already free");
 		}
 	}
 	/**

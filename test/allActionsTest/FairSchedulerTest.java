@@ -8,33 +8,30 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author moevi
- *
- */
-public class FairSchedulerTest {
+import exceptions.ActionFinishedException;
+import actions.FairScheduler;
+import actions.ForeseeableAction;
+import actions.Scheduler;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@Before
-	public void setUp() throws Exception {
+public class FairSchedulerTest extends SchedulerTest {
+	protected Scheduler createScheduler(){
+		return new FairScheduler();
 	}
 
-	/**
-	 * Test method for {@link actions.FairScheduler#removeAction(actions.Action)}.
-	 */
+
 	@Test
 	public void testRemoveAction() {
-	//	fail("Not yet implemented");
+		scheduler = createScheduler();
+		assertTrue(scheduler.getActions().isEmpty());
+		scheduler.addAction(new ForeseeableAction(1, "mockup"));
+		assertFalse(scheduler.getActions().isEmpty());
+		while(!scheduler.isFinished()){
+			try {
+				scheduler.doStep();
+			} catch (ActionFinishedException e) {
+				fail("should never happen");
+			}
+		}
+		assertTrue(scheduler.getActions().isEmpty());
 	}
-
-	/**
-	 * Test method for {@link actions.FairScheduler#nextAction()}.
-	 */
-	@Test
-	public void testNextAction() {
-	//	fail("Not yet implemented");
-	}
-
 }
